@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="stylesheet" href="template.css" />
+    <script src="solution.js"></script>
+    <title>Pascal or Camel Case</title>
+  </head>
+
+  <body>
+    <form>
+      <div>
+        <label for="text">Text: </label>
+        <input type="text" id="text" />
+      </div>
+      <div>
+        <label for="naming-convention">Naming Convention: </label>
+        <input type="text" id="naming-convention" />
+      </div>
+
+      <input type="button" onclick="solve()" value="Transform" />
+    </form>
+    <div class="result-container">Result: <span id="result"></span></div>
+  </body>
+
+  <script>
+    let text = document.getElementById("text");
+    let naming_convention = document.getElementById("naming-convention");
+    let result = document.getElementById("result");
+    let regCamelCase = "/(?:^\w|[A-Z]|\b\w)/g";
+    let regSpace = "/\s+/g";
+
+    function solve() {
+      if (naming_convention.value === "Camel Case") {
+        let changedText = text.value
+          .replace(regCamelCase, function (word, index) {
+            return index === 0 ? word.toLowerCase() : word.toUpperCase();
+          })
+          .replace(regSpace, "");
+        result.innerHTML = textCamelCase;
+      } else if (naming_convention.value === "Pascal Case") {
+        let textArr = text.value.split(" ").map((word) => word.toLowerCase());
+        result.innerHTML = textArr
+          .map((word) => word[0].toUpperCase() + word.substring(1))
+          .join("");
+      } else {
+        result.innerHTML = "Error!";
+      }
+    }
+  </script>
+</html>
