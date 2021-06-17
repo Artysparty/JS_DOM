@@ -1,2 +1,2 @@
-## :books: Education progect
+## :books: Education project
 # Working with DOM in Javascript.
