@@ -1,1 +1,1 @@
-# Работа с DOM в Javascript.
+# Working with DOM in Javascript.
